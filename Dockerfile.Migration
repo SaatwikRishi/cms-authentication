@@ -1,0 +1,8 @@
+FROM node:18-alpine
+WORKDIR /app
+#Copy Dependencies
+COPY .sequelizerc .sequelizerc
+COPY database database
+RUN npm install sequelize-cli sequelize pg pg-hstore --no-cache
+#Run Migration
+ENTRYPOINT ["npx", "sequelize-cli", "db:migrate"]
