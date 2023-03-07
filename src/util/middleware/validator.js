@@ -1,18 +1,18 @@
-const Joi = require("joi");
+const Joi = require('joi')
 
 const schemas = {
   user: Joi.object({
     username: Joi.string().min(3).max(10).alphanum().required(),
-    password: Joi.string().min(6).max(20).required(),
+    password: Joi.string().min(6).max(20).required()
   }),
-  validate: Joi.object({ token: Joi.string().min(10).max(255).required() }),
-};
+  validate: Joi.object({ token: Joi.string().min(10).max(255).required() })
+}
 const REQ_PARAMTERS = {
-  BODY: "body",
-  HEADER: "headers",
-  QUERY: "query",
-  PARAMS: "params",
-};
+  BODY: 'body',
+  HEADER: 'headers',
+  QUERY: 'query',
+  PARAMS: 'params'
+}
 
 /**
  *
@@ -21,11 +21,11 @@ const REQ_PARAMTERS = {
 
  */
 const validate = (schema, parameterType) => (req, res, next) => {
-  const { error } = schema.validate(req[parameterType]);
+  const { error } = schema.validate(req[parameterType])
   if (error) {
-    return res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message })
   }
-  next();
-};
+  next()
+}
 
-module.exports = { validate, REQ_PARAMTERS, schemas };
+module.exports = { validate, REQ_PARAMTERS, schemas }
