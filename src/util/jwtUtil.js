@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken')
 const EXPRIRE_TIME = 3600
 const HASH = process.env.HASH || 'secret'
 
-const generateJWTToken = ({ id, username }) => {
+const generateJWTToken = ({ id, email, uuid }) => {
   const payload = {
     id,
-    username
+    email,
+    uuid
   }
   const token = jwt.sign(payload, HASH, {
     expiresIn: EXPRIRE_TIME

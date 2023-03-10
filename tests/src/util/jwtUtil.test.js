@@ -10,7 +10,7 @@ describe('Tests for JWT Util', () => {
     })
   })
   describe('Verify JWT Token', () => {
-    const validToken = generateJWTToken({ id: 1, username: 'saatwik' })
+    const validToken = generateJWTToken({ id: 1, email: 'saatwik' })
     it('should verify a JWT Token', () => {
       const token = verifyToken(validToken)
       expect(token).resolves.not.toBe(null)

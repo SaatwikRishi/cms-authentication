@@ -2,10 +2,12 @@ const Joi = require('joi')
 
 const schemas = {
   user: Joi.object({
-    username: Joi.string().min(3).max(10).alphanum().required(),
+    email: Joi.string().email().required(),
     password: Joi.string().min(6).max(20).required()
   }),
-  validate: Joi.object({ token: Joi.string().min(10).max(255).required() })
+  validate: Joi.object({ token: Joi.string().min(10).max(255).required() }).options({
+    allowUnknown: true
+  })
 }
 const REQ_PARAMTERS = {
   BODY: 'body',

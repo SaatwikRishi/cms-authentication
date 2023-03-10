@@ -4,7 +4,7 @@ const { validate } = require('../../../../src/util/middleware/validator')
 describe('Tests for validator', () => {
   const req = {
     body: {
-      username: 'saatwik',
+      email: 'saatwik',
       password: 123456
     }
   }

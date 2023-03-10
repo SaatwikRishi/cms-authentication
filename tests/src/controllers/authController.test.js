@@ -7,7 +7,7 @@ describe('Tests for authController', () => {
   describe('Tests for create user', () => {
     const req = {
       body: {
-        username: 'saatwik',
+        email: 'saatwik',
         password: 123456
       }
     }
@@ -18,7 +18,7 @@ describe('Tests for authController', () => {
     it('should return the newly created user', async () => {
       jest
         .spyOn(authService, 'createUser')
-        .mockResolvedValue({ username: 'saatwik' })
+        .mockResolvedValue({ email: 'saatwik' })
       await authController.createUser(req, res)
       expect(res.status).toHaveBeenCalledWith(201)
       expect(res.json).toHaveBeenCalled()
@@ -34,7 +34,7 @@ describe('Tests for authController', () => {
   describe('Tests for login', () => {
     const req = {
       body: {
-        username: 'saatwik',
+        email: 'saatwik',
         password: 123456
       }
     }
@@ -58,7 +58,7 @@ describe('Tests for authController', () => {
 
   describe('Tests for validate token', () => {
     const req = {
-      query: {
+      headers: {
         token: 'token'
       }
     }
